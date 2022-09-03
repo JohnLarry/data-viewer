@@ -80,12 +80,81 @@ async function getData(url: string): Promise<Response> {
   return data;
 }
 
+const loadNext = (): void => {
+  if (!lastItem) {
+    previous_page = current_page;
+    //previous_page = String(Number(current_page) - 1);
+    current_page = next_page;
+    //next_page = String(Number(next_page) + 1);
+    //console.log(String(Number(current_page) + 1));
+
+    displayedData = getLocalStorage("current_data")[0][next_page];
+    prevBtn.disabled = false;
+    lastItem = true;
+
+    console.log(displayedData);
+    updateData();
+  } else {
+    current_url = next_url;
+    //previous_page = String(Number(current_page) + 1);
+    lastItem = false;
+    startApp();
+  }
+};
+const loadPrev = (): void => {
+  console.log(previous_page);
+  if (current_page != "1") {
+    if (lastItem) {
+      next_page = current_page;
+      current_page = previous_page;
+      previous_page = String(Number(current_page) - 1);
+
+      displayedData = getLocalStorage("current_data")[0][previous_page];
+      console.log(displayedData);
+      lastItem = false;
+      updateData();
+    } else {
+      console.log("previous page is " + previous_page);
+      current_url = previous_url;
+
+      startApp();
+    }
+  } else {
+    console.log("you are on the first page");
+    prevBtn.disabled = true;
+  }
+};
+
+nextBtn.addEventListener("click", loadNext);
+prevBtn.addEventListener("click", loadPrev);
+
 pageView.innerHTML = "";
+const updateData = (): void => {
+  pageView.innerHTML = "Showing page " + current_page;
+  tabBody.innerHTML = "";
+
+  displayedData.map((x) => {
+    tabBody.innerHTML +=
+      "<tr " +
+      "id = " +
+      x.id +
+      " >" +
+      " <td> " +
+      x.row +
+      " </td> " +
+      " <td> " +
+      x.gender +
+      " </td> " +
+      "<td> " +
+      x.age +
+      " </td> " +
+      " </tr>";
+  });
+};
 
 const startApp = async (): Promise<void> => {
   var response_data = await getData(current_url);
   if (response_data) {
-    console.log(response_data);
     setLocalStorage("current_data", response_data.results);
     current_page = response_data.info["page"];
     next_page = String(Number(response_data.info["page"]) + 1);
@@ -96,6 +165,8 @@ const startApp = async (): Promise<void> => {
     if (response_data.results[0]["paging"]["previous"] != undefined) {
       previous_url = response_data.results[0]["paging"]["previous"];
     }
+
+    updateData();
   }
 };
 
