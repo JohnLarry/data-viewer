@@ -1,8 +1,8 @@
 {
-    "name": "",
-    "track": "frontend",
-    "email": "",
-    "githubUsername": "",
-    "deployedAppURL": "",
-    "explainer": ""
+  "name": "John Ugbor",
+  "track": "frontend",
+  "email": "ugborjohn@gmail.com",
+  "githubUsername": "johnlarry",
+  "deployedAppURL": "https://users-data-viewer.netlify.app/",
+  "explainer": ""
 }
