@@ -83,11 +83,7 @@ async function getData(url: string): Promise<Response> {
 const loadNext = (): void => {
   if (!lastItem) {
     previous_page = current_page;
-    //previous_page = String(Number(current_page) - 1);
     current_page = next_page;
-    //next_page = String(Number(next_page) + 1);
-    //console.log(String(Number(current_page) + 1));
-
     displayedData = getLocalStorage("current_data")[0][next_page];
     prevBtn.disabled = false;
     lastItem = true;
@@ -96,32 +92,27 @@ const loadNext = (): void => {
     updateData();
   } else {
     current_url = next_url;
-    //previous_page = String(Number(current_page) + 1);
     lastItem = false;
     startApp();
   }
 };
 const loadPrev = (): void => {
   console.log(previous_page);
-  if (current_page != "1") {
-    if (lastItem) {
-      next_page = current_page;
-      current_page = previous_page;
-      previous_page = String(Number(current_page) - 1);
 
-      displayedData = getLocalStorage("current_data")[0][previous_page];
-      console.log(displayedData);
-      lastItem = false;
-      updateData();
-    } else {
-      console.log("previous page is " + previous_page);
-      current_url = previous_url;
-
-      startApp();
-    }
+  if (lastItem) {
+    next_page = current_page;
+    current_page = previous_page;
+    previous_page = String(Number(previous_page) - 1);
+    console.log("the previous wahala error page is " + previous_page);
+    displayedData = getLocalStorage("current_data")[0][current_page];
+    console.log(displayedData);
+    lastItem = false;
+    updateData();
   } else {
-    console.log("you are on the first page");
-    prevBtn.disabled = true;
+    console.log("previous page is " + previous_page);
+    current_url = previous_url;
+
+    startApp();
   }
 };
 
