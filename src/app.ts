@@ -130,7 +130,7 @@ prevBtn.addEventListener("click", loadPrev);
 
 pageView.innerHTML = "";
 const updateData = (): void => {
-  pageView.innerHTML = "Showing page " + current_page;
+  pageView.innerHTML = "Showing Page " + current_page;
   tabBody.innerHTML = "";
 
   displayedData.map((x) => {
