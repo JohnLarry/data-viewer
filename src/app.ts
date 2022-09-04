@@ -88,7 +88,6 @@ const loadNext = (): void => {
     prevBtn.disabled = false;
     lastItem = true;
 
-    console.log(displayedData);
     updateData();
   } else {
     current_url = next_url;
@@ -97,21 +96,20 @@ const loadNext = (): void => {
   }
 };
 const loadPrev = (): void => {
-  console.log(previous_page);
   if (current_page === "2") {
     prevBtn.disabled = true;
   }
+
   if (lastItem) {
     next_page = current_page;
     current_page = previous_page;
     previous_page = String(Number(previous_page) - 1);
-    console.log("the previous wahala error page is " + previous_page);
+
     displayedData = getLocalStorage("current_data")[0][current_page];
-    console.log(displayedData);
+
     lastItem = false;
     updateData();
   } else {
-    console.log("previous page is " + previous_page);
     current_url = previous_url;
 
     startApp();
