@@ -1,4 +1,4 @@
-#Implementation Details
+# Implementation Details
 
 - prevBtn is disabled on first load
 - prevBtn is disabled when prevBtn is clicked and the currentPage is "2"
@@ -24,14 +24,14 @@
 
 - current_url is subsequently resassigned under the movePrev and moveNext function
 
-##How it works
+## How it works
 
 - It makes an api request and load the page 1 after the initial page load
 - When Next button is clicked, the moveNext function checks if the current page is displaying the last array of the results from initial api request
 
-  - if true, next_url is passed to getData and the new page ui is updated and also the api result is saved to localstorage
-  - if false, the next_page data is loaded from the local storage and the ui updated
+  - if true, which means that next_page data is not on the localstorage, next_url is passed to getData and the new page ui is updated and also the api result is saved to localstorage
+  - if false, which means the next_page data is on the localstorage, the next_page data is loaded from the local storage and the ui updated
 
 - When Previous button is clicked, the movePrev function checks if the current page is displaying the last array of the results from initial api request
-  - if true, prev_url is passed to getData and the new page ui is updated and also the api result is saved to localstorage
-  - if false, the previous_page data is loaded from the local storage and the ui updated
+  - if false which means that previous_page data is not on the localstorage, prev_url is passed to getData and the new page ui is updated and also the api result is saved to localstorage
+  - if true, which means the previous_page data is on the localstorage, the previous_page data is loaded from the local storage and the ui updated
