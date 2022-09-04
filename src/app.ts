@@ -58,7 +58,7 @@ export interface User {
 
 var displayedData;
 var current_url: string =
-  "https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84&page=1";
+  "https://randomapi.com/api/8csrgnjw?key=LEIX-GF3O-AG7I-6J84";
 var next_url: string = "";
 var previous_url: string = "";
 var current_page: string = "1";
@@ -98,7 +98,9 @@ const loadNext = (): void => {
 };
 const loadPrev = (): void => {
   console.log(previous_page);
-
+  if (current_page === "2") {
+    prevBtn.disabled = true;
+  }
   if (lastItem) {
     next_page = current_page;
     current_page = previous_page;
