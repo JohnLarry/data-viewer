@@ -136,7 +136,7 @@ const updateData = (): void => {
   displayedData.map((x) => {
     tabBody.innerHTML +=
       "<tr " +
-      "id = " +
+      "data-entryid = " +
       x.id +
       " >" +
       " <td> " +
