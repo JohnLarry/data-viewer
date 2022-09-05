@@ -66,8 +66,6 @@ var next_page: string;
 var previous_page: string = "0";
 // last array item of the user data
 var lastItem: boolean = false;
-// prev btn state
-var isPrevDisabled: boolean = false;
 
 var tabBody = <HTMLElement>document.querySelector("[data-sink]");
 var nextBtn = <HTMLButtonElement>document.querySelector("[data-nextbtn]");
