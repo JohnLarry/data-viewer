@@ -1,14 +1,15 @@
 # Implementation Details
 
 - Variables
-  -- displayedData - holds the results received from api request;
-  -- current_url - holds the current url that will be used for api request
-  -- next_url - holds the value of next page url
-  -- previous_url - holds the value of previous page url
-  -- current_page - holds the value of current page on the ui
-  -- next_page - holds the value of the next page
-  -- previous_page - holds the value of the previous page
-  -- lastItem - true next or previous page data is on the localstorage
+
+  - displayedData - holds the results received from api request;
+  - current_url - holds the current url that will be used for api request
+  - next_url - holds the value of next page url
+  - previous_url - holds the value of previous page url
+  - current_page - holds the value of current page on the ui
+  - next_page - holds the value of the next page
+  - previous_page - holds the value of the previous page
+  - lastItem - true next or previous page data is on the localstorage
 
 - prevBtn is disabled on first load
 - prevBtn is disabled when prevBtn is clicked and the currentPage is "2"
